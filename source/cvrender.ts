@@ -1,4 +1,7 @@
 /// <reference path="../typings/node/node" />
+/// <reference path="CV" />
+/// <reference path="Renderer" />
+
 
 var fs = require("fs")
 
@@ -12,8 +15,8 @@ module CVRender {
 				this.commands.push(".")
 			}
 		}
-		private open(path: string) {
-			var configuration = JSON.parse(fs.readFileSync(path))
+		private open(path: string): CV {
+			return <CV> JSON.parse(fs.readFileSync(path))
 		}
 		private save(path: string, content: string) {
 			fs.writeFile(path, content)
@@ -21,7 +24,9 @@ module CVRender {
 		private runHelper(command: string, commands: string[]) {
 			switch (command) {
 				case "html":
-					var data = this.open(commands.shift())
+					var cv = this.open(commands.shift())
+					var output = new Renderer().render(cv)
+					console.log(output)
 					break
 				case "version": console.log("cvrender " + this.getVersion()); break
 				case "help": console.log("help")

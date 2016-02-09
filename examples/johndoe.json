@@ -1,0 +1,66 @@
+{
+	"style": "./resume.css",
+	"name": "John Doe",
+	"email": "john.doe@example.com",
+	"phone": "+1-234-567 890",
+	"description": "Skilled placeholder for a real employee specializing in examples.",
+	"competences": ["Placeholding", "Pretending", "Work Simulation", "Example generation", "Project management", "Heat Conductivity"],
+	"employments": [
+		{
+			"company": "Consulting Services Inc",
+			"title": "Senior Placeholder",
+			"start": "August 2014",
+			"end": "present",
+			"description": "Consulted as placeholder."
+		},
+		{
+			"title": "Junior Placeholder",
+			"company": "Acme Inc",
+			"start": "June 2010",
+			"end": "August 2012",
+			"description": "Placeholder on payrole of Fortune 500 company."
+		}
+	],
+	"educations": [
+		{
+			"name": "Master of Arts in Faking",
+			"school": "Example University",
+			"start": "2005",
+			"end": "2010",
+			"description": "Master degree in the art of pretending."
+		},
+		{
+			"name": "Bachelor of Arts in Placeholding",
+			"school": "Example University",
+			"start": "2005",
+			"end": "2010",
+			"description": "Bachelor degree in the art of placeholding."
+		}
+	],
+	"projects": [
+		{
+			"name": "Project A",
+			"start": "August 2014",
+			"end": "present",
+			"roles": ["project manager"],
+			"description": "Placeholder project working on A.",
+			"competences": ["Project management", "Placeholding", "Pretending", "Work Simulation", "Example generation"]
+		},
+		{
+			"name": "Placeholder Improvements",
+			"start": "October 2014",
+			"end": "November 2014",
+			"roles": ["mentor", "placeholder"],
+			"description": "Improved support for handling placeholders in payrole.",
+			"competences": ["Image Analysis", "Optical Flow"]
+		},
+		{
+			"name": "Seat warming",
+			"start": "June 2014",
+			"end": "November 2014",
+			"roles": ["head seat warmer"],
+			"description": "Keeping a seat warm during a real employees absence.",
+			"competences": ["Heat Conductivity", "Work Simulation"]
+		}
+	]
+}
