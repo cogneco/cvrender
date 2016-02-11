@@ -5,7 +5,7 @@
 module CVRender {
 	export interface CV {
 		style: string
-		date: string
+		updated: string
 		name: string
 		email: string
 		phone: string
