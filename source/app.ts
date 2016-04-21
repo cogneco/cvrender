@@ -24,9 +24,16 @@ module CVRender {
 		private runHelper(command: string, commands: string[]) {
 			switch (command) {
 				case "html":
-					var cv = this.open(commands.shift())
+					var path = this.commands.shift()
+					var cv = this.open(path)
 					var output = new Renderer().render(cv)
-					console.log(output)
+					fs.writeFileSync(path.replace(/\.json$/, ".html"), output)
+					break
+				case "pdf":
+					var path = this.commands.shift()
+					var cv = this.open(path)
+					var output = new Renderer().render(cv)
+					fs.writeFileSync(path.replace(/\.json$/, ".pdf"), cp.execFileSync("prince", ["--javascript", "-", "-o", "-"], { input: output, cwd: path.replace(/\/[a-z,A-Z,-,_,\.]+$/, "") }))
 					break
 				case "version": console.log("cvrender " + this.getVersion()); break
 				case "help": console.log("help")
