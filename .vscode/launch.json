@@ -5,10 +5,11 @@
 			"name": "html",
 			"type": "node",
 			"request": "launch",
-			"program": "build/cvrender.js",
+			"program": "${workspaceRoot}/build/app.js",
 			"stopOnEntry": false,
-			"args": ["html", "examples/johndoe.json"],
-			"cwd": ".",
+			"args": ["html", "./examples/johndoe.json"],
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": "build",
 			"runtimeExecutable": null,
 			"runtimeArgs": [
 				"--nolazy"
@@ -18,13 +19,7 @@
 			},
 			"externalConsole": false,
 			"sourceMaps": true,
-			"outDir": "build"
-		},
-		{
-			"name": "Attach",
-			"type": "node",
-			"request": "attach",
-			"port": 5858
+			"outDir": "${workspaceRoot}/build"
 		}
 	]
 }

@@ -1,9 +1,9 @@
-/// <reference path="../typings/node/node" />
-/// <reference path="CV" />
-/// <reference path="Renderer" />
+/// <reference path="./tsd.d.ts" />
+import { CV } from "./CV"
+import { Renderer } from "./Renderer"
 
-
-var fs = require("fs")
+import * as fs from "fs"
+import * as cp from "child_process"
 
 module CVRender {
 	export class Program {
@@ -16,7 +16,7 @@ module CVRender {
 			}
 		}
 		private open(path: string): CV {
-			return <CV> JSON.parse(fs.readFileSync(path))
+			return <CV> JSON.parse(fs.readFileSync(path, "utf-8"))
 		}
 		private save(path: string, content: string) {
 			fs.writeFile(path, content)

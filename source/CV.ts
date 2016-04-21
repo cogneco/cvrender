@@ -1,19 +1,17 @@
-/// <reference path="Employment" />
-/// <reference path="Education" />
-/// <reference path="Project" />
+import { Employment } from "./Employment"
+import { Education } from "./Education"
+import { Project } from "./Project"
 
-module CVRender {
-	export interface CV {
-		style: string
-		updated: string
-		name: string
-		email: string
-		phone: string
-		photo?: string
-		description: string
-		competences: string[]
-		employments: Employment[],
-		educations: Education[],
-		projects: Project[]
-	}
+export interface CV {
+	style: string
+	updated: string
+	name: string
+	email: string
+	phone: string
+	photo?: string
+	description: string
+	competences: string[]
+	employments: Employment[],
+	educations: Education[],
+	projects: Project[]
 }

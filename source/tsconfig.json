@@ -1,15 +1,14 @@
 {
 	"compilerOptions": {
-		"target": "es3",
+		"target": "es6",
 		"module": "commonjs",
 		"noImplicitAny": true,
 		"removeComments": true,
 		"preserveConstEnums": true,
-		"out": "build/cvrender.js",
 		"sourceMap": true,
-		"sourceRoot": "../source"
+		"outDir": "../build/"
 	},
 	"files": [
-		"source/cvrender.ts"
+		"app.ts"
 	]
 }
