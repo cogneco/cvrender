@@ -12,6 +12,6 @@ export interface CV {
 	description: string
 	competences: string[]
 	employments: Employment[],
-	educations: Education[],
+	education: Education[],
 	projects: Project[]
 }

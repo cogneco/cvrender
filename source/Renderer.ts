@@ -72,10 +72,10 @@ export class Renderer {
 		<h1>Projects</h1>
 		${data.projects.map(this.renderProject).join("")}
 	</section>` : ""}
-	${data.educations ?
+	${data.education ?
 	`<section id="educations">
 		<h1>Education</h1>
-		${data.educations.map(this.renderEducation).join("")}
+		${data.education.map(this.renderEducation).join("")}
 	</section>` : ""}
 </body>
 </html>
