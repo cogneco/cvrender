@@ -74,7 +74,7 @@ export class Renderer {
 	</section>` : ""}
 	${data.educations ?
 	`<section id="educations">
-		<h1>Educations</h1>
+		<h1>Education</h1>
 		${data.educations.map(this.renderEducation).join("")}
 	</section>` : ""}
 </body>

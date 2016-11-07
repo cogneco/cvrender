@@ -36,8 +36,11 @@ module CVRender {
 					fs.writeFileSync(path.replace(/\.json$/, ".pdf"), cp.execFileSync("prince", ["--javascript", "-", "-o", "-"], { input: output, cwd: path.replace(/\/[a-z,A-Z,-,_,\.]+$/, "") }))
 					break
 				case "version": console.log("cvrender " + this.getVersion()); break
-				case "help": console.log("help")
+				case "help":
 					console.log("cvrender html [cv.json]")
+					console.log("cvrender pdf [cv.json]")
+					console.log("cvrender version")
+					console.log("cvrender help")
 					break
 				default:
 					commands.push(command)
