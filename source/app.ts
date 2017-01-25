@@ -6,6 +6,8 @@ import { DocxRenderer } from "./DocxRenderer"
 import * as fs from "fs"
 import * as cp from "child_process"
 import * as async from "async"
+import * as co from "co"
+import * as inline from "inline-html"
 
 module CVRender {
 	export class Program {
@@ -44,7 +46,10 @@ module CVRender {
 					var path = this.commands.shift()
 					var cv = this.open(path)
 					var output = new HtmlRenderer().render(cv)
-					fs.writeFileSync(path.replace(/\.json$/, ".html"), output)
+					inline.html(output).then(output => {
+						fs.writeFileSync(path.replace(/\.json$/, ".html"), output)
+						process.exit(0)
+					})
 					break
 				case "pdf":
 					var path = this.commands.shift()

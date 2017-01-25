@@ -38,12 +38,12 @@ export class HtmlRenderer {
 	<meta charset="UTF-8">
 	<title>${data.name}</title>
 	<meta name="subject" content="${data.name}"/>
-	<meta name="email" content="${data.email}"/>
-	<meta name="phone" content="${data.phone}"/>
-	<meta name="date" content="${data.updated}"/>
+	${data.email ? `<meta name="email" content="${data.email}"/>` : ""}
+	${data.phone ? `<meta name="phone" content="${data.phone}"/>` : ""}
+	${data.updated ? `<meta name="date" content="${data.updated}"/>` : ""}
 	<meta name="classification" content=""/>
 	<meta name="generator" content="https://github.com/cogneco/cvrenderer"/>
-	<link rel="stylesheet" type="text/css" href="${data.style}">
+	${data.style ? `<link rel="stylesheet" type="text/css" href="${data.style}">`	: ""}
 </head>
 <body>
 	<header>
