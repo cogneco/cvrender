@@ -40,6 +40,25 @@
 			"externalConsole": false,
 			"sourceMaps": true,
 			"outDir": "${workspaceRoot}/build"
+		},		{
+			"name": "docx",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceRoot}/build/app.js",
+			"stopOnEntry": false,
+			"args": ["docx", "./examples/johndoe.json"],
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": "build",
+			"runtimeExecutable": null,
+			"runtimeArgs": [
+				"--nolazy"
+			],
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"externalConsole": false,
+			"sourceMaps": true,
+			"outDir": "${workspaceRoot}/build"
 		}
 	]
 }

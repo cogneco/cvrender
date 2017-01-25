@@ -2,12 +2,21 @@
 	"compilerOptions": {
 		"target": "es6",
 		"module": "commonjs",
-		"noImplicitAny": true,
+		"moduleResolution": "node",
+		"noImplicitAny": false,
 		"removeComments": true,
 		"preserveConstEnums": true,
+		"strictNullChecks": false,
 		"sourceMap": true,
-		"outDir": "../build/"
+		"sourceRoot": "./",
+		"outDir": "../build/",
+		"types": [
+			"node"
+		]
 	},
+	"exclude": [
+		"node_modules"
+	],
 	"files": [
 		"app.ts"
 	]

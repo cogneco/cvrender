@@ -3,7 +3,7 @@ import { Education } from "./Education"
 import { Project } from "./Project"
 import { CV } from "./CV"
 
-export class Renderer {
+export class HtmlRenderer {
 	private renderEmployment(data: Employment): string {
 		return data ? `
 		<article class="employment">

@@ -6,15 +6,14 @@
 	"files.trimTrailingWhitespace": true,
 	"search.exclude": {
 		"node_modules": true,
-		"typings": true,
 		".vscode": true
 	},
 	"files.exclude": {
 		"node_modules": true,
-		"typings": true,
-		".vscode": true,
+		".vscode": false,
 		"build": true,
-		"source/tsd.d.ts": true,
 		"**/.git": true
 	}
+,
+"typescript.check.workspaceVersion": false
 }

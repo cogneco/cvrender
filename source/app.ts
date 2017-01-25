@@ -1,9 +1,11 @@
-/// <reference path="./tsd.d.ts" />
+
 import { CV } from "./CV"
-import { Renderer } from "./Renderer"
+import { HtmlRenderer } from "./HtmlRenderer"
+import { DocxRenderer } from "./DocxRenderer"
 
 import * as fs from "fs"
 import * as cp from "child_process"
+import * as async from "async"
 
 module CVRender {
 	export class Program {
@@ -23,16 +25,31 @@ module CVRender {
 		}
 		private runHelper(command: string, commands: string[]) {
 			switch (command) {
+				case "docx":
+					var path = this.commands.shift()
+					var cv = this.open(path)
+					var stream = fs.createWriteStream(path.replace(/\.json$/, ".docx"))
+					async.parallel([
+						done => {
+							stream.on("close", () => process.exit(0))
+							new DocxRenderer().render(cv, stream)
+						}
+					], error => {
+						if (error) {
+							console.log('error: ' + error)
+						}
+					})
+					break
 				case "html":
 					var path = this.commands.shift()
 					var cv = this.open(path)
-					var output = new Renderer().render(cv)
+					var output = new HtmlRenderer().render(cv)
 					fs.writeFileSync(path.replace(/\.json$/, ".html"), output)
 					break
 				case "pdf":
 					var path = this.commands.shift()
 					var cv = this.open(path)
-					var output = new Renderer().render(cv)
+					var output = new HtmlRenderer().render(cv)
 					fs.writeFileSync(path.replace(/\.json$/, ".pdf"), cp.execFileSync("prince", ["--javascript", "-", "-o", "-"], { input: output, cwd: path.replace(/\/[a-z,A-Z,-,_,\.]+$/, "") }))
 					break
 				case "version": console.log("cvrender " + this.getVersion()); break
