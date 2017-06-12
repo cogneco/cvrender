@@ -62,15 +62,15 @@ export class HtmlRenderer {
 			</ul>
 		</article>
 	</section>
-	${data.employments ?
-	`<section id="employments">
-		<h1>Employments</h1>
-		${data.employments.map(this.renderEmployment).join("")}
-	</section>` : ""}
 	${data.projects ?
 	`<section id="projects">
 		<h1>Projects</h1>
 		${data.projects.map(this.renderProject).join("")}
+	</section>` : ""}
+	${data.employments ?
+	`<section id="employments">
+		<h1>Employments</h1>
+		${data.employments.map(this.renderEmployment).join("")}
 	</section>` : ""}
 	${data.education ?
 	`<section id="educations">
