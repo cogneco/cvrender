@@ -21,7 +21,7 @@ export class HtmlRenderer {
 	private renderProject(data: Project): string {
 		return data ? `
 		<article class="project">
-			<h2>${data.name}</h2>
+		<h2>${data.name}${data.customer ? `, <em>${data.customer}</em>` : ""}</h2>
 			<p class="time">${data.start} - ${data.end}</p>​
 			<p>${data.description.replace("\n\n","</p><p>")}</p>
 			<dl>

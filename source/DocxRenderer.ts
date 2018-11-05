@@ -19,7 +19,7 @@ export class DocxRenderer {
 	private renderEmployment(data: Employment): void {
 		if (data) {
 			var p = this.backend.createP()
-			p.addText(data.title + " ", this.style.h2)
+			p.addText(data.title + ", ", this.style.h2)
 			p.addText(data.company, { ...this.style.h2, italic: true })
 			p.addHorizontalLine()
 			this.backend.createP().addText(`${data.start} - ${data.end}`)
@@ -44,6 +44,10 @@ export class DocxRenderer {
 		if (data) {
 			var p = this.backend.createP()
 			p.addText(data.name, this.style.h2)
+			if (data.customer) {
+				p.addText(", ", this.style.h2)
+				p.addText(data.customer, { ...this.style.h2, italic: true })
+			}
 			p.addHorizontalLine()
 			this.backend.createP().addText(`${data.start} - ${data.end}`)
 			data.description.split("\n\n").forEach(paragraph => {

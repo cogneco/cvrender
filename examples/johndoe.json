@@ -39,6 +39,7 @@
 	"projects": [
 		{
 			"name": "Project A",
+			"customer": "Customer",
 			"start": "August 2014",
 			"end": "present",
 			"roles": ["project manager"],
