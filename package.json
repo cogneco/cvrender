@@ -7,21 +7,21 @@
     "setup": "npm install",
     "start": "node ./build/index.js",
     "prestart": "npm run build",
-    "build": "tsc -p ./source && echo '#!/usr/bin/env node' > build/index && browserify --node build/index.js >> build/index && chmod 755 build/app",
+    "build": "tsc -p ./source && echo '#!/usr/bin/env node' > build/index && browserify --node build/index.js >> build/index && chmod 755 build/index",
     "predeploy": "npm install && npm run build",
     "deploy": "sudo cp build/index /usr/local/bin/cvrenderer",
     "clean": "rm -rf build typings node_modules source/tsd.d.ts"
   },
   "dependencies": {
-    "async": "^2.1.4",
+    "async": "^2.6.1",
     "inline-html": "^0.2.4",
-    "node": "0.0.0",
-    "officegen": "^0.4.1"
+    "node": "11.0.0",
+    "officegen": "^0.4.7"
   },
   "devDependencies": {
-    "@types/async": "^2.0.38",
-    "@types/node": "^7.0.4",
-    "browserify": "^14.0.0",
-    "typescript": "^2.1.5"
+    "@types/async": "^2.0.50",
+    "@types/node": "^10.12.3",
+    "browserify": "^16.2.3",
+    "typescript": "^3.1.6"
   }
 }
