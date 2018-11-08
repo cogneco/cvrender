@@ -18,6 +18,6 @@
 		"node_modules"
 	],
 	"files": [
-		"app.ts"
+		"index.ts"
 	]
 }

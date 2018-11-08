@@ -5,16 +5,15 @@
   "private": true,
   "scripts": {
     "setup": "npm install",
-    "start": "node ./build/app.js",
+    "start": "node ./build/index.js",
     "prestart": "npm run build",
-    "build": "tsc -p ./source && echo '#!/usr/bin/env node' > build/app && browserify --node build/app.js >> build/app && chmod 755 build/app",
+    "build": "tsc -p ./source && echo '#!/usr/bin/env node' > build/index && browserify --node build/index.js >> build/index && chmod 755 build/app",
     "predeploy": "npm install && npm run build",
-    "deploy": "sudo cp build/app /usr/local/bin/cvrenderer",
+    "deploy": "sudo cp build/index /usr/local/bin/cvrenderer",
     "clean": "rm -rf build typings node_modules source/tsd.d.ts"
   },
   "dependencies": {
     "async": "^2.1.4",
-    "co": "^4.6.0",
     "inline-html": "^0.2.4",
     "node": "0.0.0",
     "officegen": "^0.4.1"

@@ -4,8 +4,9 @@ import { Project } from "./Project"
 import { CV } from "./CV"
 import * as officegen from "officegen"
 import * as fs from "fs"
+import { Renderer, addRenderer } from "./Renderer";
 
-export class DocxRenderer {
+export class DocxRenderer extends Renderer {
 	backend
 	style = {
 		header: { font_size: 18, bold: true },
@@ -59,7 +60,7 @@ export class DocxRenderer {
 			p.addText(data.competences.join(", "))
 		}
 	}
-	render(data: CV, output: fs.WriteStream): void {
+	render(data: CV, output: fs.WriteStream, style: string): Promise<boolean> {
 		this.backend = officegen({
 			'type': 'docx',
 			'subject': data.name
@@ -101,5 +102,7 @@ export class DocxRenderer {
 			data.education.forEach(this.renderEducation.bind(this))
 		}
 		this.backend.generate(output)
+		return Promise.resolve(true)
 	}
 }
+addRenderer("docx", (data: CV, output: fs.WriteStream, style: string) => new DocxRenderer().render(data, output, style))

@@ -2,8 +2,12 @@ import { Employment } from "./Employment"
 import { Education } from "./Education"
 import { Project } from "./Project"
 import { CV } from "./CV"
+import { addRenderer, Renderer } from "./Renderer"
+import * as fs from "fs"
+import * as inline from "inline-html"
 
-export class HtmlRenderer {
+export class HtmlRenderer extends Renderer {
+	constructor() { super() }
 	private renderEmployment(data: Employment): string {
 		return data ? `
 		<article class="employment">
@@ -31,7 +35,7 @@ export class HtmlRenderer {
 				${data.competences.map(c => `<dd>${c}</dd>`).join("")}
 			</dl>
 		</article>` : ""}
-	render(data: CV): string { return `
+	renderString(data: CV, style?: string): string { return `
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -40,10 +44,10 @@ export class HtmlRenderer {
 	<meta name="subject" content="${data.name}"/>
 	${data.email ? `<meta name="email" content="${data.email}"/>` : ""}
 	${data.phone ? `<meta name="phone" content="${data.phone}"/>` : ""}
-	${data.updated ? `<meta name="date" content="${data.updated}"/>` : ""}
+	<meta name="date" content="${data.updated || new Date().toDateString()}"/>
 	<meta name="classification" content=""/>
 	<meta name="generator" content="https://github.com/cogneco/cvrenderer"/>
-	${data.style ? `<link rel="stylesheet" type="text/css" href="${data.style}">`	: ""}
+	${style ? `<link rel="stylesheet" type="text/css" href="${style}">`	: ""}
 </head>
 <body>
 	<header>
@@ -80,4 +84,9 @@ export class HtmlRenderer {
 </body>
 </html>
 ` }
+	async render(data: CV, output: fs.WriteStream, style?: string): Promise<boolean> {
+		return inline.html(this.renderString(data, style)).then(d => output.write(d))
+	}
 }
+addRenderer("html", (data: CV, output: fs.WriteStream, style: string) => new HtmlRenderer().render(data, output, style))
+
