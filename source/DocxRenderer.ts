@@ -3,9 +3,7 @@ import { Education } from "./Education"
 import { Project } from "./Project"
 import { CV } from "./CV"
 import * as officegen from "officegen"
-import * as path from "path"
 import * as fs from "fs"
-
 
 export class DocxRenderer {
 	backend
