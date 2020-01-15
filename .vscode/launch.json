@@ -5,7 +5,7 @@
 			"name": "html",
 			"type": "node",
 			"request": "launch",
-			"program": "${workspaceRoot}/build/app.js",
+			"program": "${workspaceRoot}/build/index.js",
 			"stopOnEntry": false,
 			"args": ["html", "./examples/johndoe.json"],
 			"cwd": "${workspaceRoot}",
@@ -17,15 +17,15 @@
 			"env": {
 				"NODE_ENV": "development"
 			},
-			"externalConsole": false,
+			"console": "internalConsole",
 			"sourceMaps": true,
-			"outDir": "${workspaceRoot}/build"
+			"outFiles": [ "${workspaceRoot}/build/**/*.js" ]
 		},
 		{
 			"name": "pdf",
 			"type": "node",
 			"request": "launch",
-			"program": "${workspaceRoot}/build/app.js",
+			"program": "${workspaceRoot}/build/index.js",
 			"stopOnEntry": false,
 			"args": ["pdf", "./examples/johndoe.json"],
 			"cwd": "${workspaceRoot}",
@@ -37,14 +37,14 @@
 			"env": {
 				"NODE_ENV": "development"
 			},
-			"externalConsole": false,
+			"console": "internalConsole",
 			"sourceMaps": true,
-			"outDir": "${workspaceRoot}/build"
+			"outFiles": [ "${workspaceRoot}/build/**/*.js" ]
 		},		{
 			"name": "docx",
 			"type": "node",
 			"request": "launch",
-			"program": "${workspaceRoot}/build/app.js",
+			"program": "${workspaceRoot}/build/index.js",
 			"stopOnEntry": false,
 			"args": ["docx", "./examples/johndoe.json"],
 			"cwd": "${workspaceRoot}",
@@ -56,9 +56,9 @@
 			"env": {
 				"NODE_ENV": "development"
 			},
-			"externalConsole": false,
+			"console": "internalConsole",
 			"sourceMaps": true,
-			"outDir": "${workspaceRoot}/build"
+			"outFiles": [ "${workspaceRoot}/build/**/*.js" ]
 		}
 	]
 }

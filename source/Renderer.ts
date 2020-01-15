@@ -6,14 +6,14 @@ export abstract class Renderer {
 	abstract render(data: CV, result: fs.WriteStream, style?: string): Promise<boolean>
 }
 type renderer = (data: CV, output: fs.WriteStream, style?: string) => Promise<boolean>
-var renderers: { [type: string]: renderer } = {}
-export function addRenderer(type: string, render: renderer) {
-	renderers[type] = render
+const renderers: { [type: string]: renderer } = {}
+export function addRenderer(type: string, r: renderer) {
+	renderers[type] = r
 }
-export async function render(type: string, data: CV, output: fs.WriteStream, style?: string) : Promise<boolean> {
-	const render = renderers[type]
-	let result = !!render
+export async function render(type: string, data: CV, output: fs.WriteStream, style?: string): Promise<boolean> {
+	const r = renderers[type]
+	let result = !!r
 	if (result)
-		result = await render(data, output, style)
+		result = await r(data, output, style)
 	return result
 }

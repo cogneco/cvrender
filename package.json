@@ -7,21 +7,23 @@
     "setup": "npm install",
     "start": "node ./build/index.js",
     "prestart": "npm run build",
-    "build": "tsc -p ./source && echo '#!/usr/bin/env node' > build/index && browserify --node build/index.js >> build/index && chmod 755 build/index",
+    "prebuild": "tslint --config .vscode/tslint.json --project source/tsconfig.json",
+    "build": "tsc -p ./source && echo '#!/usr/bin/env node' > build/index && rollup build/index.js --format cjs >> build/index && chmod 755 build/index",
     "predeploy": "npm install && npm run build",
     "deploy": "sudo cp build/index /usr/local/bin/cvrenderer",
     "clean": "rm -rf build typings node_modules source/tsd.d.ts"
   },
   "dependencies": {
-    "async": "^2.6.1",
+    "async": "^3.1.0",
     "inline-html": "^0.2.4",
-    "node": "11.0.0",
-    "officegen": "^0.4.7"
+    "node": "13.6.0",
+    "officegen": "^0.6.3"
   },
   "devDependencies": {
-    "@types/async": "^2.0.50",
-    "@types/node": "^10.12.3",
-    "browserify": "^16.2.3",
-    "typescript": "^3.1.6"
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4",
+    "rollup": "^1.29.0",
+    "@types/async": "^3.0.3",
+    "@types/node": "^13.1.7"
   }
 }

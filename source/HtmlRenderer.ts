@@ -13,21 +13,21 @@ export class HtmlRenderer extends Renderer {
 		<article class="employment">
 			<h2>${data.title}, <em>${data.company}</em></h2>
 			<p class="time">${data.start} - ${data.end}</p>​
-			<p>${data.description.replace("\n\n","</p><p>")}</p>
+			<p>${data.description.replace("\n\n", "</p><p>")}</p>
 		</article>` : ""}
 	private renderEducation(data: Education): string {
 		return data ? `
 		<article class="education">
 			<h2>${data.name}, <em>${data.school}</em></h2>
 			<p class="time">${data.start} - ${data.end}</p>​
-			<p>${data.description.replace("\n\n","</p><p>")}</p>
+			<p>${data.description.replace("\n\n", "</p><p>")}</p>
 		</article>` : ""}
 	private renderProject(data: Project): string {
 		return data ? `
 		<article class="project">
 		<h2>${data.name}${data.customer ? `, <em>${data.customer}</em>` : ""}</h2>
 			<p class="time">${data.start} - ${data.end}</p>​
-			<p>${data.description.replace("\n\n","</p><p>")}</p>
+			<p>${data.description.replace("\n\n", "</p><p>")}</p>
 			<dl>
 				<dt>Role</dt>
 				${data.roles.map(c => `<dd>${c}</dd>`).join("")}
@@ -57,7 +57,7 @@ export class HtmlRenderer extends Renderer {
 	<section id="profile">
 		<h1>Profile</h1>
 		<article>
-			<p>${data.description.replace("\n\n","</p><p>")}</p>
+			<p>${data.description.replace("\n\n", "</p><p>")}</p>
 		</article>
 		<article>
 			<h2>Competences</h2>
@@ -88,5 +88,5 @@ export class HtmlRenderer extends Renderer {
 		return inline.html(this.renderString(data, style)).then(d => output.write(d))
 	}
 }
-addRenderer("html", (data: CV, output: fs.WriteStream, style: string) => new HtmlRenderer().render(data, output, style))
 
+addRenderer("html", (data: CV, output: fs.WriteStream, style: string) => new HtmlRenderer().render(data, output, style))

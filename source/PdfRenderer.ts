@@ -1,6 +1,6 @@
 import { CV } from "./CV"
 import { addRenderer } from "./Renderer"
-import { HtmlRenderer } from "./HtmlRenderer";
+import { HtmlRenderer } from "./HtmlRenderer"
 
 import * as fs from "fs"
 import * as cp from "child_process"
