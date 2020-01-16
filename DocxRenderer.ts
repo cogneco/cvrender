@@ -7,7 +7,7 @@ import * as fs from "fs"
 import { Renderer, addRenderer } from "./Renderer"
 
 export class DocxRenderer extends Renderer {
-	backend
+	backend: any
 	style = {
 		header: { font_size: 18, bold: true },
 		h1: { font_size: 16, bold: false },

@@ -1,29 +1,70 @@
 {
-  "name": "cvrender",
-  "description": "Renders HTML Curriculum Vitae from JSON data.",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "setup": "npm install",
-    "start": "node ./build/index.js",
-    "prestart": "npm run build",
-    "prebuild": "tslint --config .vscode/tslint.json --project source/tsconfig.json",
-    "build": "tsc -p ./source && echo '#!/usr/bin/env node' > build/index && rollup build/index.js --format cjs >> build/index && chmod 755 build/index",
-    "predeploy": "npm install && npm run build",
-    "deploy": "sudo cp build/index /usr/local/bin/cvrenderer",
-    "clean": "rm -rf build typings node_modules source/tsd.d.ts"
+ "name": "cvrender",
+ "version": "0.1.0",
+ "description": "Command line tool to render resumes.",
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/cogneco/cvrender"
+ },
+ "author": "Simon Mika <simon@mika.se>",
+ "license": "MIT",
+ "bugs": {
+  "url": "https://github.com/cogneco/cvrender/issues"
+ },
+ "homepage": "https://github.com/cogneco/cvrender#readme",
+ "bin": {
+  "cvrender": "dist/index.js"
+ },
+ "main": "dist/index.js",
+ "typings": "dist/index.d.ts",
+ "jest": {
+  "globals": {
+   "ts-jest": {
+    "tsConfig": "tsconfig.test.json"
+   }
   },
-  "dependencies": {
-    "async": "^3.1.0",
-    "inline-html": "^0.2.4",
-    "node": "13.6.0",
-    "officegen": "^0.6.3"
-  },
-  "devDependencies": {
-    "tslint": "^5.20.1",
-    "typescript": "^3.7.4",
-    "rollup": "^1.29.0",
-    "@types/async": "^3.0.3",
-    "@types/node": "^13.1.7"
-  }
+  "testEnvironment": "node",
+  "testRegex": "((\\.|/)(test|spec))(\\.|\\/.+)(jsx?|tsx?)$",
+  "testPathIgnorePatterns": [
+   "node_modules/",
+   "dist/"
+  ],
+  "collectCoverageFrom": [
+   "**/*.{ts,tsx,js,jsx}",
+   "!**/node_modules/**",
+   "!**/dist/**"
+  ],
+  "preset": "ts-jest",
+  "testMatch": null
+ },
+ "scripts": {
+  "dev": "watch 'npm run build' .",
+  "lint": "tslint --config tslint.json --project .",
+  "build": "tsc -p .",
+  "pretest": "npm run build",
+  "test": "jest",
+  "test:watch": "watch jest",
+  "preversion": "npm run test",
+  "version": "npm run build",
+  "postversion": "git push && git push --tags",
+  "clean": "rm -rf dist node_modules coverage"
+ },
+ "dependencies": {
+  "async": "^3.1.0",
+  "inline-html": "^0.2.4",
+  "node": "13.6.0",
+  "officegen": "^0.6.3"
+ },
+ "devDependencies": {
+  "tslint": "^5.20.1",
+  "typescript": "^3.7.4",
+  "@types/async": "^3.0.3",
+  "@types/node": "^13.1.7",
+  "@types/jest": "^24.0.23",
+  "babel-core": "^6.26.3",
+  "babel-jest": "^24.9.0",
+  "jest": "^24",
+  "ts-jest": "^24.2.0",
+  "watch": "^1.0.2"
+ }
 }

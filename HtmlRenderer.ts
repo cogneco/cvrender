@@ -46,7 +46,7 @@ export class HtmlRenderer extends Renderer {
 	${data.phone ? `<meta name="phone" content="${data.phone}"/>` : ""}
 	<meta name="date" content="${data.updated || new Date().toDateString()}"/>
 	<meta name="classification" content=""/>
-	<meta name="generator" content="https://github.com/cogneco/cvrenderer"/>
+	<meta name="generator" content="https://github.com/cogneco/cvrender"/>
 	${style ? `<link rel="stylesheet" type="text/css" href="${style}">`	: ""}
 </head>
 <body>
