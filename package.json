@@ -51,7 +51,7 @@
  },
  "dependencies": {
   "async": "^3.1.0",
-  "inline-html": "^0.2.4",
+  "inline-html": "^1.2.0",
   "node": "13.6.0",
   "officegen": "^0.6.3"
  },
